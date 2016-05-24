@@ -54,7 +54,50 @@ namespace Blog.DAL.Tests
             // arrange
             List<Post> posty = new List<Post>();
             List<Comment> komentarze = new List<Comment>();
-            Setup(posty, komentarze);
+            var post = new Post();
+
+            post.Id = 1;
+            post.Nr = 1;
+            post.Author = "autor 1";
+            post.Content = "post 1";
+            posty.Add(post);
+
+            var post2 = new Post();
+
+            post2.Id = 2;
+            post2.Nr = 2;
+            post2.Author = "autor 2";
+            post2.Content = "post 2";
+            posty.Add(post2);
+
+            var post3 = new Post();
+
+            post3.Id = 3;
+            post3.Nr = 3;
+            post3.Author = "autor 2";
+            post3.Content = "post 3";
+            posty.Add(post3);
+
+            var komentarz = new Comment();
+
+            komentarz.Id = 1;
+            komentarz.Post = 1;
+            komentarz.Content = "komentarz do postu 1";
+            komentarze.Add(komentarz);
+
+            var komentarz2 = new Comment();
+
+            komentarz2.Id = 2;
+            komentarz2.Post = 1;
+            komentarz2.Content = "drugi komentarz do postu 1";
+            komentarze.Add(komentarz2);
+
+            var komentarz3 = new Comment();
+
+            komentarz3.Id = 3;
+            komentarz3.Post = 2;
+            komentarz3.Content = "komentarz do postu 2";
+            komentarze.Add(komentarz3);
 
             // act
             int ile = posty.Count();
