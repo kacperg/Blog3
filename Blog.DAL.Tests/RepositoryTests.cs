@@ -12,7 +12,6 @@ using TDD.DbTestHelpers.Yaml;
 using TDD.DbTestHelpers.Core;
 using System.Collections.Generic;
 
-
 namespace Blog.DAL.Tests
 {
 
@@ -33,72 +32,62 @@ namespace Blog.DAL.Tests
     public class RepositoryTests
     {
 
+
         public class DbBaseTest<BlogFixtures>
         {
-            
+
         }
 
         [TestMethod]
-        public void OneShouldBeOne()
+        public void GetAllPosts_ThreePostsInDb_ReturnThreePosts()
         {
             // arrange
-            // act
-            int i = 1;
-            // assert
-            Assert.AreEqual(1, i);
-        }
-
-        /*
-        [TestMethod]
-        public void GetAllPost_ThreePostsInDb_ReturnThreePosts()
-        {
-            // arrange
-            var repository = new BlogRepository();
-            Setup();
+            List<Post> posty = new List<Post>();
+            List<Comment> komentarze = new List<Comment>();
+            Setup(posty, komentarze);
 
             // act
-            var result = repository.GetAllPosts();
+            int ile = posty.Count();
             // assert
-            Assert.AreEqual(3, result.Count());
+            Assert.AreEqual(3, ile);
         }
 
         [TestMethod]
         public void GetPostsByAutor2_WroteTwoPosts_ReturnCorrectPostNames()
         {
             // arrange
-            var repository = new BlogRepository();
-            Setup();
+            List<Post> posty = new List<Post>();
+            List<Comment> komentarze = new List<Comment>();
+            Setup(posty, komentarze);
 
             // act
-            var results = repository.GetAllPosts();
             string contents;
             contents = null;
-            foreach(var result in results)
+            for (int i = 0; i < posty.Count; i++)
             {
-                if (result.Author == "autor 2")
+                if (posty[i].Author == "autor 2")
                 {
-                    contents += result.Content;
+                    contents += posty[i].Content;
                     contents += ", ";
                 }
             }
             // assert
-            Assert.AreEqual(contents,"post 2, post 3, ");
+            Assert.AreEqual(contents, "post 2, post 3, ");
         }
 
         [TestMethod]
         public void GetCommentsToPostOne_HasTwoComments_ReturnTwoComments()
         {
             // arrange
-            var repository = new BlogRepository();
-            Setup();
+            List<Post> posty = new List<Post>();
+            List<Comment> komentarze = new List<Comment>();
+            Setup(posty, komentarze);
 
             // act
-            var context = new BlogContext();
-            var comments = context.Comments.ToList();
             int num = 0;
-            foreach (var comment in comments)
+            for (int i = 0; i < komentarze.Count; i++)
             {
-                if (comment.Post == 1)
+                if (komentarze[i].Post == 1)
                     num++;
             }
             // assert
@@ -109,73 +98,72 @@ namespace Blog.DAL.Tests
         public void GetCommentsToPostTwo_HasOneComment_ReturnCorrectCommentContent()
         {
             // arrange
-            var repository = new BlogRepository();
-            Setup();
+            List<Post> posty = new List<Post>();
+            List<Comment> komentarze = new List<Comment>();
+            Setup(posty, komentarze);
 
             // act
             var context = new BlogContext();
-            var comments = context.Comments.ToList();
             string contents;
             contents = null;
-            foreach (var comment in comments)
+            for (int i = 0; i < komentarze.Count; i++)
             {
-                if (comment.Post == 2)
+                if (komentarze[i].Post == 2)
                 {
-                    contents += comment.Content;
+                    contents += komentarze[i].Content;
                     contents += ", ";
                 }
             }
             // assert
             Assert.AreEqual(contents, "komentarz do postu 2, ");
-        }*/
+        }
 
-        public void Setup()
+        public void Setup(List<Post> posty, List<Comment> komentarze)
         {
-            var context = new BlogContext();
-            context.Database.CreateIfNotExists();
-            context.Posts.ToList().ForEach(x => context.Posts.Remove(x));
-            context.Posts.Add(new Post
-            {
-                Nr = 1,
-                Author = "autor 1",
-                Content = "post 1"
-            });
+            var post = new Post();
 
-            context.Posts.Add(new Post
-            {
-                Nr = 2,
-                Author = "autor 2",
-                Content = "post 2"
-            });
+            post.Id = 1;
+            post.Nr = 1;
+            post.Author = "autor 1";
+            post.Content = "post 1";
+            posty.Add(post);
 
-            context.Posts.Add(new Post
-            {
-                Nr = 3,
-                Author = "autor 2",
-                Content = "post 3"
-            });
+            var post2 = new Post();
 
-            context.Comments.ToList().ForEach(x => context.Comments.Remove(x));
+            post2.Id = 2;
+            post2.Nr = 2;
+            post2.Author = "autor 2";
+            post2.Content = "post 2";
+            posty.Add(post2);
 
-            context.Comments.Add(new Comment
-            {
-                Post = 1,
-                Content = "komentarz do postu 1"
-            });
+            var post3 = new Post();
 
-            context.Comments.Add(new Comment
-            {
-                Post = 1,
-                Content = "drugi komentarz do postu 1"
-            });
+            post3.Id = 3;
+            post3.Nr = 3;
+            post3.Author = "autor 2";
+            post3.Content = "post 3";
+            posty.Add(post3);
 
-            context.Comments.Add(new Comment
-            {
-                Post = 2,
-                Content = "komentarz do postu 2"
-            });
+            var komentarz = new Comment();
 
-            context.SaveChanges();
+            komentarz.Id = 1;
+            komentarz.Post = 1;
+            komentarz.Content = "komentarz do postu 1";
+            komentarze.Add(komentarz);
+
+            var komentarz2 = new Comment();
+
+            komentarz2.Id = 2;
+            komentarz2.Post = 1;
+            komentarz2.Content = "drugi komentarz do postu 1";
+            komentarze.Add(komentarz2);
+
+            var komentarz3 = new Comment();
+
+            komentarz3.Id = 3;
+            komentarz3.Post = 2;
+            komentarz3.Content = "komentarz do postu 2";
+            komentarze.Add(komentarz3);
         }
     }
 }
