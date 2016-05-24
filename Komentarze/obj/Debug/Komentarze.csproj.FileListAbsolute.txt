@@ -1,0 +1,16 @@
+D:\sab\Blog\Komentarze\bin\Debug\Komentarze.exe.config
+D:\sab\Blog\Komentarze\bin\Debug\Komentarze.exe
+D:\sab\Blog\Komentarze\bin\Debug\Komentarze.pdb
+D:\sab\Blog\Komentarze\bin\Debug\Blog.DAL.dll
+D:\sab\Blog\Komentarze\bin\Debug\EntityFramework.dll
+D:\sab\Blog\Komentarze\bin\Debug\Blog.DAL.pdb
+D:\sab\Blog\Komentarze\bin\Debug\EntityFramework.xml
+D:\sab\Blog\Komentarze\obj\Debug\Komentarze.csprojResolveAssemblyReference.cache
+D:\sab\Blog\Komentarze\obj\Debug\Komentarze.Form1.resources
+D:\sab\Blog\Komentarze\obj\Debug\Komentarze.Properties.Resources.resources
+D:\sab\Blog\Komentarze\obj\Debug\Komentarze.csproj.GenerateResource.Cache
+D:\sab\Blog\Komentarze\obj\Debug\Komentarze.exe
+D:\sab\Blog\Komentarze\obj\Debug\Komentarze.pdb
+D:\Blog3\Komentarze\bin\Debug\Komentarze.exe.config
+D:\Blog3\Komentarze\obj\Debug\Komentarze.exe
+D:\Blog3\Komentarze\obj\Debug\Komentarze.pdb

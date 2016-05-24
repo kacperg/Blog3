@@ -1,0 +1,7 @@
+D:\sab\Blog\Blog.DAL\bin\Debug\Blog.DAL.dll
+D:\sab\Blog\Blog.DAL\bin\Debug\Blog.DAL.pdb
+D:\sab\Blog\Blog.DAL\bin\Debug\EntityFramework.dll
+D:\sab\Blog\Blog.DAL\bin\Debug\EntityFramework.xml
+D:\sab\Blog\Blog.DAL\obj\Debug\Blog.DAL.dll
+D:\sab\Blog\Blog.DAL\obj\Debug\Blog.DAL.pdb
+D:\sab\Blog\Blog.DAL\obj\Debug\Blog.DAL.csprojResolveAssemblyReference.cache
