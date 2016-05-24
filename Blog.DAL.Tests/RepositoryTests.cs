@@ -33,6 +33,26 @@ namespace Blog.DAL.Tests
     public class RepositoryTests
     {
 
+        public class Comment
+        {
+            public long Id { get; set; }
+
+            public string Content { get; set; }
+
+            public long Post { get; set; }
+        }
+
+        public class Post
+        {
+            public long Id { get; set; }
+
+            public long Nr { get; set; }
+
+            public string Content { get; set; }
+
+            public string Author { get; set; }
+        }
+
         public class DbBaseTest<BlogFixtures>
         {
             
