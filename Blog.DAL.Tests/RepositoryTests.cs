@@ -33,7 +33,7 @@ namespace Blog.DAL.Tests
     public class RepositoryTests
     {
 
-        public class Comment
+        /*public class Comment
         {
             public long Id { get; set; }
 
@@ -51,7 +51,7 @@ namespace Blog.DAL.Tests
             public string Content { get; set; }
 
             public string Author { get; set; }
-        }
+        }*/
 
         public class DbBaseTest<BlogFixtures>
         {
