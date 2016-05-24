@@ -12,6 +12,7 @@ using TDD.DbTestHelpers.Yaml;
 using TDD.DbTestHelpers.Core;
 using System.Collections.Generic;
 
+
 namespace Blog.DAL.Tests
 {
 
@@ -32,10 +33,19 @@ namespace Blog.DAL.Tests
     public class RepositoryTests
     {
 
-
         public class DbBaseTest<BlogFixtures>
         {
+            
+        }
 
+        [TestMethod]
+        public void OneShouldBeOne()
+        {
+            // arrange
+            // act
+            int i = 1;
+            // assert
+            Assert.AreEqual(1, i);
         }
 
         [TestMethod]
@@ -52,42 +62,57 @@ namespace Blog.DAL.Tests
             Assert.AreEqual(3, ile);
         }
 
+        /*
+        [TestMethod]
+        public void GetAllPost_ThreePostsInDb_ReturnThreePosts()
+        {
+            // arrange
+            var repository = new BlogRepository();
+            Setup();
+
+            // act
+            var result = repository.GetAllPosts();
+            // assert
+            Assert.AreEqual(3, result.Count());
+        }
+
         [TestMethod]
         public void GetPostsByAutor2_WroteTwoPosts_ReturnCorrectPostNames()
         {
             // arrange
-            List<Post> posty = new List<Post>();
-            List<Comment> komentarze = new List<Comment>();
-            Setup(posty, komentarze);
+            var repository = new BlogRepository();
+            Setup();
 
             // act
+            var results = repository.GetAllPosts();
             string contents;
             contents = null;
-            for (int i = 0; i < posty.Count; i++)
+            foreach(var result in results)
             {
-                if (posty[i].Author == "autor 2")
+                if (result.Author == "autor 2")
                 {
-                    contents += posty[i].Content;
+                    contents += result.Content;
                     contents += ", ";
                 }
             }
             // assert
-            Assert.AreEqual(contents, "post 2, post 3, ");
+            Assert.AreEqual(contents,"post 2, post 3, ");
         }
 
         [TestMethod]
         public void GetCommentsToPostOne_HasTwoComments_ReturnTwoComments()
         {
             // arrange
-            List<Post> posty = new List<Post>();
-            List<Comment> komentarze = new List<Comment>();
-            Setup(posty, komentarze);
+            var repository = new BlogRepository();
+            Setup();
 
             // act
+            var context = new BlogContext();
+            var comments = context.Comments.ToList();
             int num = 0;
-            for (int i = 0; i < komentarze.Count; i++)
+            foreach (var comment in comments)
             {
-                if (komentarze[i].Post == 1)
+                if (comment.Post == 1)
                     num++;
             }
             // assert
@@ -98,25 +123,25 @@ namespace Blog.DAL.Tests
         public void GetCommentsToPostTwo_HasOneComment_ReturnCorrectCommentContent()
         {
             // arrange
-            List<Post> posty = new List<Post>();
-            List<Comment> komentarze = new List<Comment>();
-            Setup(posty, komentarze);
+            var repository = new BlogRepository();
+            Setup();
 
             // act
             var context = new BlogContext();
+            var comments = context.Comments.ToList();
             string contents;
             contents = null;
-            for (int i = 0; i < komentarze.Count; i++)
+            foreach (var comment in comments)
             {
-                if (komentarze[i].Post == 2)
+                if (comment.Post == 2)
                 {
-                    contents += komentarze[i].Content;
+                    contents += comment.Content;
                     contents += ", ";
                 }
             }
             // assert
             Assert.AreEqual(contents, "komentarz do postu 2, ");
-        }
+        }*/
 
         public void Setup(List<Post> posty, List<Comment> komentarze)
         {
